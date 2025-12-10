@@ -175,3 +175,8 @@ To avoid any future charges (especially if you're on the Free Tier), be sure to 
 2.  Delete the `start_glue_job_trigger` Lambda function.
 3.  Delete the `process_reviews_job` Glue job.
 4.  Delete the `AWSGlueServiceRole-Reviews` IAM role.
+
+
+## Screenshots
+
+![[./screenshots/Pasted image 20251209213047.png]]
