@@ -29,29 +29,29 @@ The core problem this project solves is the need for manual data processing. In 
 
 * **Ingestion & Transformation**
 
-  * Glue reads all CSVs from the landing bucket with headers and schema inference.
-  * Cleans and transforms data:
+  * Glue reads CSVs from the landing bucket with headers and schema inference.
+  * Transforms the data by:
 
-    * Casts `rating` to integer and fills nulls with `0`.
-    * Converts `review_date` to `DATE` (`yyyy-MM-dd`).
-    * Replaces null `review_text` with `"No review text"`.
-    * Adds `product_id_upper` as the uppercase version of `product_id`.
+    * Casting `rating` to integer and filling nulls with `0`.
+    * Converting `review_date` to `DATE` (`yyyy-MM-dd`).
+    * Replacing null `review_text` with `"No review text"`.
+    * Adding `product_id_upper` as the uppercase `product_id`.
 
-* **Outputs (Parquet)**
+* ** Athena Outputs (Parquet) written to the analytics S3 path(in the athena outputs**
 
-  * Writes the full transformed dataset to:
+  * Product-level metrics: `run-1765333683592-part-r-00000`
+  * Date-wise review counts: `daily_review_counts.snappy.parquet`
+  * Rating distribution: `rating_distribution.snappy.parquet`
+  * Top 5 most active customers: `top_5_customers.snappy.parquet`
+ 
+  * 
+* **Processing Outputs (Parquet) written to the analytics S3 path(in the athena outputs**
 
-    * `s3://handsonfinalprocessed/processed-data/`
-  * Writes analytics aggregates to:
+  * Cleaned file: `run-1765333672189-part-r-00000`
 
-    * Product averages: `Athena Results/`
-    * Date-wise counts: `Athena Results/daily_review_counts/`
-    * Top 5 customers: `Athena Results/top_5_customers/`
-    * Rating distribution: `Athena Results/rating_distributions/`
 
 
 ## 🏗️ Architecture
-
 
 
 **Data Flow:**
