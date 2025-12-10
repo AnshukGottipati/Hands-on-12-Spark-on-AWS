@@ -178,5 +178,9 @@ To avoid any future charges (especially if you're on the Free Tier), be sure to 
 
 
 ## Screenshots
+## Screenshots
+![ProcessDataFileInAws](./screenshots/Pasted%20image%2020251209213047.png)
+![AthenaResultsInAws](./screenshots/Pasted%20image%2020251209213101.png)
+![GlueLogs](./screenshots/Pasted%20image%2020251209214736.png)
 
-![[./screenshots/Pasted image 20251209213047.png]]
+
