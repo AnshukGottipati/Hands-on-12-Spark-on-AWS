@@ -20,6 +20,36 @@ The core problem this project solves is the need for manual data processing. In 
 
 ---
 
+## ETL Job Approach
+
+* **Triggering**
+
+  * Uploading a CSV file to `s3://handsonfinallanding/` fires an S3 event.
+  * An AWS Lambda function listens to this event and starts the Glue job.
+
+* **Ingestion & Transformation**
+
+  * Glue reads all CSVs from the landing bucket with headers and schema inference.
+  * Cleans and transforms data:
+
+    * Casts `rating` to integer and fills nulls with `0`.
+    * Converts `review_date` to `DATE` (`yyyy-MM-dd`).
+    * Replaces null `review_text` with `"No review text"`.
+    * Adds `product_id_upper` as the uppercase version of `product_id`.
+
+* **Outputs (Parquet)**
+
+  * Writes the full transformed dataset to:
+
+    * `s3://handsonfinalprocessed/processed-data/`
+  * Writes analytics aggregates to:
+
+    * Product averages: `Athena Results/`
+    * Date-wise counts: `Athena Results/daily_review_counts/`
+    * Top 5 customers: `Athena Results/top_5_customers/`
+    * Rating distribution: `Athena Results/rating_distributions/`
+
+
 ## 🏗️ Architecture
 
 
